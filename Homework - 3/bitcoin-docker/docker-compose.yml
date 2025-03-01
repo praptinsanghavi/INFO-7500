@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  bitcoind:
+    build: .
+    image: bitcoin-node
+    container_name: bitcoin_node
+    volumes:
+      - ./bitcoin.conf:/data/bitcoin.conf  # Keep this for config mounting
+      - hw3-bitcoin-data:/data  # Use named volume instead of local directory
+    ports:
+      - "8332:8332"
+      - "8333:8333"
+    restart: unless-stopped
+
+volumes:
+  hw3-bitcoin-data:  # Correctly define the named volume here
+    name: bitcoin-docker_hw3-bitcoin-data  # Explicitly define the volume name
+
+
