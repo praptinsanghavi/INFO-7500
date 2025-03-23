@@ -1,0 +1,8 @@
+### SQLite SQL tables, with their properties:
+# Customers(id, name, country)
+# Orders(id, customer_id, amount)
+
+### A natural language question:
+What is the total amount of orders for each customer?
+
+### SQLite SQL query:
