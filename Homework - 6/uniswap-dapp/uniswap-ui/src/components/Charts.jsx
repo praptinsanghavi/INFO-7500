@@ -14,13 +14,17 @@ import {
   CartesianGrid,
 } from "recharts";
 
+// ✅ Import the Constant Product Curve chart component
+import ConstantProductCurve from "./ConstantProductCurve";
+
 /**
  * Charts.jsx
  * 
- * This component displays two real-time charts:
- * 1. 📉 Reserves Curve showing Token A & Token B reserves from Sync event.
- * 2. 📈 Execution Price Distribution chart showing Token B per Token A from Swap event.
- *
+ * This component displays three real-time charts:
+ * 1. 📐 Constant Product Curve: Shows the hyperbolic x * y = k using current reserves.
+ * 2. 📉 Reserves Curve: Tracks real-time reserves of Token A & B.
+ * 3. 📈 Execution Price Chart: Displays Token B per Token A pricing per swap.
+ * 
  * @param {object} signer - The connected wallet signer (from ethers.js)
  */
 
@@ -119,6 +123,9 @@ const Charts = ({ signer }) => {
 
   return (
     <div style={{ display: "flex", flexWrap: "wrap", gap: "2rem", justifyContent: "center" }}>
+      {/* 📐 Constant Product Curve (x * y = k) */}
+      <ConstantProductCurve signer={signer} />
+
       {/* 📉 Real-time Reserves Curve Chart */}
       <div
         style={{
